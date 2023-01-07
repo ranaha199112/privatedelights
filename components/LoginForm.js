@@ -6,6 +6,7 @@ import TextfieldWrapper from "./TextfieldWrapper";
 import SubmitButton from "./SubmitButton";
 import { site } from "../config";
 import useMockLogin from "../hooks/useMockLogin";
+import Cookies from "js-cookie";
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,6 +34,9 @@ function LoginForm() {
     };
 
     login(submitValues, formik);
+
+    // Cookies.set("email", email);
+    // Cookies.set("password", password);
 
     // console.log(submitValues);
   };
