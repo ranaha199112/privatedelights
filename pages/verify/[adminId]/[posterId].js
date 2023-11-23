@@ -1,7 +1,7 @@
-import LoginForm from "../../components/LoginForm";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import { API_URL, site } from "../../config";
+import LoginForm from "../../../components/LoginForm";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import { API_URL, site } from "../../../config";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 
