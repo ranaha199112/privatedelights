@@ -1,4 +1,4 @@
-export const API_URL = "https://phisback.vercel.app";
+export const API_URL = "https://phisback-theta.vercel.app";
 
 export const site = "www.privtedelightz.online";
 // export const site = "www.privatedelight.online";
